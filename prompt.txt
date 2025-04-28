@@ -1,0 +1,175 @@
+want quiz application, "NPTEL-Assignment-Memorizer" Quiz data is like this : assignments: [
+    // Week 0
+    {
+      id: "week-0",
+      title:
+        "Week 0: Organizational Behaviour: Individual Dynamics in Organization",
+      questions: [
+        {
+          id: "w0q1",
+          text: "Which of the following does not imply the features of an organization as studied in organizational behaviour?",
+          options: [
+            "Composed of people",
+            "Consciously coordinated",
+            "Groups or gangs",
+            "Common goals",
+          ],
+          correctAnswer: 2,
+        },
+        {
+          id: "w0q2",
+          text: "The evolution of the field of Organizational Behaviour can be attributed to many disciplines such as:",
+          options: [
+            "Psychology, anthropology and Physics",
+            "Philosophy, psychology and sociology",
+            "Philately, anthropology and psychology",
+          ],
+          correctAnswer: 1,
+        },
+        {
+          id: "w0q3",
+          text: "At the base of Maslow's need hierarchy lies:",
+          options: [
+            "Psychological needs",
+            "Philosophical needs",
+            "Esteem needs",
+            "Physiological needs",
+          ],
+          correctAnswer: 3,
+        },
+        {
+          id: "w0q4",
+          text: "Biases in decision making can be reduced by:",
+          options: [
+            "Stereotyping",
+            "Looking for information that disconfirms your existing beliefs",
+            "Taking help of prejudice",
+            "Taking example of the favourite group",
+          ],
+          correctAnswer: 1,
+        },
+        {
+          id: "w0q5",
+          text: "What is the primary purpose of Job Rotation in an organization?",
+          options: [
+            "Enhancing employee specialization",
+            "Reducing employee morale",
+            "Broadening employee skills and knowledge",
+            "Limiting employee growth opportunities",
+          ],
+          correctAnswer: 2,
+        },
+        {
+          id: "w0q6",
+          text: "Which of the following is a key aspect of Job Enrichment?",
+          options: [
+            "Reducing employee responsibilities",
+            "Narrowing the scope of tasks",
+            "Adding more meaningful tasks and responsibilities to a job",
+            "Simplifying job roles to improve efficiency",
+          ],
+          correctAnswer: 2,
+        },
+        {
+          id: "w0q7",
+          text: "Which of the following is a potential benefit of Employee Involvement?",
+          options: [
+            "Reduced innovation and creativity",
+            "Lower productivity levels",
+            "Improved employee morale and commitment",
+            "Increased hierarchical barriers in the organization",
+          ],
+          correctAnswer: 2,
+        },
+        {
+          id: "w0q8",
+          text: "Job Rotation involves:",
+          options: [
+            "Assigning an employee to a variety of tasks within the same job role",
+            "Switching employees across different departments or positions",
+            "Eliminating job positions to create flexibility",
+            "Limiting employees to specific repetitive tasks",
+          ],
+          correctAnswer: 1,
+        },
+      ],
+    },
+
+    // Week 1
+    {
+      id: "week-1",
+      title:
+        "Week 1: Organizational Behaviour: Individual Dynamics in Organization",
+      questions: [
+        {
+          id: "w1q1",
+          text: "What does 'individual differences' in organizational behavior refer to?",
+          options: [
+            "Similarities among individuals in an organization",
+            "Differences in age within a group",
+            "Differences in behavior and traits among individuals",
+            "Differences in physical abilities among individuals",
+            "None of the above",
+          ],
+          correctAnswer: 2,
+        },
+        {
+          id: "w1q2",
+          text: "What does evidence-based management rely on?",
+          options: [
+            "Personal opinions",
+            "Randomized experiments",
+            "Scientific evidence and data",
+            "Intuition",
+            "Guesswork",
+          ],
+          correctAnswer: 2,
+        },
+        {
+          id: "w1q3",
+          text: "Who is known for the theory of bureaucracy in organizational studies?",
+          options: [
+            "Peter Drucker",
+            "Chester Bernard",
+            "Max Weber",
+            "Fred Luthans",
+            "Elton Mayo",
+          ],
+          correctAnswer: 2,
+        }, ...
+
+So the in a NPTEL course there are 0 to 12 weeks in all and there is quiz data in the similar format for everyweek. So once the user enters the app they select the week the want to have take a quiz of  . The data of the quiz of that week opens. on correct answer the there must be green color with small bell sound also on selecting wrong option the backround color turns red with buzz-error sound. Then the result page after quiz. Celebration UI if the score is good. The quiz must have retry button at all time in the ui also at the time of result page. 
+
+I want a round and bouncy neomorphism UI , sleek and modern. 
+this must be the entry page: 
+"use client"
+
+import { useState } from "react"
+import { Canvas } from "@react-three/fiber"
+import { QuizContainer } from "@/components/quiz-container"
+import { NPTELScene } from "@/components/nptel-scene"
+
+export function EntryPage() {
+  const [showQuiz, setShowQuiz] = useState(false)
+
+  if (showQuiz) {
+    return <QuizContainer />
+  }
+
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-[#e0e5ec] overflow-hidden">
+      <div className="w-full h-screen">
+        <Canvas camera={{ position: [10.047021, -0.127436, -11.137374], fov: 50 }}>
+          <NPTELScene onStartQuiz={() => setShowQuiz(true)} />
+        </Canvas>
+      </div>
+      <div className="absolute bottom-10 left-0 right-0 text-center">
+        <p className="text-xl md:text-2xl font-light tracking-wide text-white drop-shadow-lg">
+          <span className="font-mono">NPTEL</span> <span className="font-serif italic">Learning</span>{" "}
+          <span className="font-sans font-bold">max.</span>
+        </p>
+        <p className="text-white mt-4 text-sm md:text-base animate-pulse">Click on NPTEL to start</p>
+      </div>
+    </div>
+  )
+}

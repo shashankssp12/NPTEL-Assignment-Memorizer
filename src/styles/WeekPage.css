@@ -1,0 +1,20 @@
+.loading-text {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 2rem 0;
+  color: #666;
+}
+
+.error-text {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 2rem 0;
+  color: #d9534f;
+  padding: 1rem;
+  background-color: #f8d7da;
+  border-radius: 5px;
+}
+
+.questions-container {
+  margin-top: 2rem;
+}
